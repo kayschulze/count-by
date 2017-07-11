@@ -10,13 +10,19 @@ var countingUpDisplay = function(by, upto) {
 
 var numberValidation = function(number) {
   if (isNaN(number)) {
-    alert("This is not a number.  Try again.")
+    alert("This is not a number.  Try again.");
+    return false;
   }
   else if (number == 0) {
-    alert("I love zeros!  But that doesn't help us here.")
+    alert("I love zeros!  But that doesn't help us here.");
+    return false;
   }
   else if (number < 0) {
-    alert("Let's try to be positive here.")
+    alert("Let's try to be positive here.");
+    return false;
+  }
+  else {
+    return true;
   }
 };
 
@@ -26,9 +32,16 @@ $(function() {
     var countByNumber = parseInt($("#countBy").val());
     var countUpToNumber = parseInt($("#countUp").val());
 
-    numberValidation(countByNumber);
-    numberValidation(countUpToNumber);
+    var countByValidation = numberValidation(countByNumber);
+    var countUpToValidation = numberValidation(countUpToNumber);
 
-    countingUpDisplay(countByNumber, countUpToNumber);
+    if (countByValidation && countUpToValidation) {
+      if (countByNumber < countUpToNumber) {
+        countingUpDisplay(countByNumber, countUpToNumber);
+      }
+      else {
+        alert("This count by number must be smaller than the count up to number.")
+      }
+    }
   });
 });
