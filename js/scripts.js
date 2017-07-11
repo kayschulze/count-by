@@ -2,8 +2,7 @@
 // variable i acts as an index that gets displayed as the counting number.
 var countingUpDisplay = function(by, upto) {
   $("#ourCount").show();
-  
-  for (i = by; i < upto; i += by) {
+  for (var i = by; i <= upto; i += by) {
     $("p").append(" " + i + " ");
     alert(i);
   }
@@ -12,8 +11,8 @@ var countingUpDisplay = function(by, upto) {
 $(function() {
   $("#count-up-form").submit(function(event) {
     event.preventDefault();
-    var countByNumber = $("#countBy").val();
-    var countUpToNumber = $("#countUp").val();
+    var countByNumber = parseInt($("#countBy").val());
+    var countUpToNumber = parseInt($("#countUp").val());
 
     console.log(countByNumber, countUpToNumber);
     countingUpDisplay(countByNumber, countUpToNumber);
