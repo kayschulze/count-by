@@ -10,15 +10,18 @@ var countingUpDisplay = function(by, upto) {
 
 var numberValidation = function(number) {
   if (isNaN(number)) {
-    alert("This is not a number.  Try again.");
+    $("p").append("<p class='text-danger'>This is not a number.  Try again.</p>");
+    $(".error").show();
     return false;
   }
   else if (number == 0) {
-    alert("I love zeros!  But that doesn't help us here.");
+    $("p").append("<p class='text-danger'>I love zeros!  But that doesn't help us here.</p>");
+    $(".error").show();
     return false;
   }
   else if (number < 0) {
-    alert("Let's try to be positive here.");
+    $("p").append("<p class='text-danger'>Let's try to be positive here.</p>");
+    $(".error").show();
     return false;
   }
   else {
@@ -40,7 +43,8 @@ $(function() {
         countingUpDisplay(countByNumber, countUpToNumber);
       }
       else {
-        alert("This count by number must be smaller than the count up to number.")
+        $("p").append("<p class='text-danger'>This count by number must be smaller than the count up to number.</p>");
+        $(".error").show();
       }
     }
   });
