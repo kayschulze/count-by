@@ -10,20 +10,20 @@ var countingUpDisplay = function(by, upto) {
 
 var numberValidation = function(number) {
   if (isNaN(number)) {
-    $("p").text("");
-    $("p").append("<p class='text-danger'>This is not a number.  Try again.</p>");
+    $("p#errortext").text("");
+    $("p#errortext").text("This is not a number.  Try again.");
     $(".error").show();
     return false;
   }
   else if (number == 0) {
-    $("p").text("");
-    $("p").append("<p class='text-danger'>I love zeros!  But that doesn't help us here.</p>");
+    $("p#errortext").text("");
+    $("p#errortext").text("I love zeros!  But that doesn't help us here.");
     $(".error").show();
     return false;
   }
   else if (number < 0) {
-    $("p").text("");
-    $("p").append("<p class='text-danger'>Let's try to be positive here.</p>");
+    $("p#errortext").text("");
+    $("p#errortext").text("Let's try to be positive here.");
     $(".error").show();
     return false;
   }
@@ -34,6 +34,8 @@ var numberValidation = function(number) {
 
 $(function() {
   $("#count-up-form").submit(function(event) {
+    $("#ourCount").hide();
+    $(".error").hide();
     event.preventDefault();
     var countByNumber = parseInt($("#countBy").val());
     var countUpToNumber = parseInt($("#countUp").val());
@@ -46,8 +48,8 @@ $(function() {
         countingUpDisplay(countByNumber, countUpToNumber);
       }
       else {
-        $("p").text("");
-        $("p").append("<p class='text-danger'>This count by number must be smaller than the count up to number.</p>");
+        $("p#errortext").text("");
+        $("p#errortext").text("This count by number must be smaller than the count up to number.");
         $(".error").show();
       }
     }
