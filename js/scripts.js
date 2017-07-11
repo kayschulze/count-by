@@ -1,9 +1,11 @@
 // function does the work of counting and displaying to a certain number.
 // variable i acts as an index that gets displayed as the counting number.
 var countingUpDisplay = function(by, upto) {
+  $("#ourCount").show();
+  
   for (i = by; i < upto; i += by) {
     $("p").append(" " + i + " ");
-    $("#ourCount").show();
+    alert(i);
   }
 };
 
