@@ -2,7 +2,7 @@
 // variable i acts as an index that gets displayed as the counting number.
 var countingUpDisplay = function(by, upto) {
   for (i = by, i < upto, i += by) {
-    
+    $("p").append(" " + i + " ");
   }
 };
 
